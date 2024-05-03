@@ -7,6 +7,6 @@ export default tseslint.config(
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
   {
-    ignores: [".storybook/"],
+    ignores: ["**/.storybook/*", "**/dist/*", "**/node_modules/*"],
   },
 );
