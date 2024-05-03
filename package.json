@@ -1,5 +1,5 @@
 {
-  "name": "@gyeonghokim/ghwc",
+  "name": "@gyeonghokim/gyeongho-design-system",
   "private": true,
   "type": "module",
   "workspaces": [
@@ -7,34 +7,22 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/gyeonghokim/ghwc"
+    "url": "https://github.com/GyeongHoKim/gyeongho-design-system"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
   "dependencies": {
-    "@gyeongho/gyeongho-web-component-table": "file:packages/gyeongho-web-component-table"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "^1.3.3",
     "@eslint/js": "^9.1.1",
-    "@storybook/addon-designs": "^8.0.0",
-    "@storybook/addon-essentials": "^8.0.8",
-    "@storybook/addon-links": "^8.0.8",
-    "@storybook/blocks": "^8.0.8",
-    "@storybook/test": "^8.0.8",
-    "@storybook/web-components": "^8.0.8",
-    "@storybook/web-components-vite": "^8.0.8",
     "eslint": "^8.57.0",
     "lerna": "^8.1.2",
-    "lit": "^3.1.3",
-    "storybook": "^8.0.8",
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.7.0"
   },
   "scripts": {
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "build": "lerna run build",
     "lint": "npx eslint ."
   }
 }

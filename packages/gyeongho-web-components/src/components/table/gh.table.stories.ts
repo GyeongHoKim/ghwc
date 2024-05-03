@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/web-components";
 import { fakerKO as faker } from "@faker-js/faker";
 import { html } from "lit";
 import { repeat } from "lit/directives/repeat.js";
-import "./index";
+import "../../index";
 
 type CustomArgs = { isSortable?: boolean };
 

@@ -1,5 +1,5 @@
 # Workflow name
-name: 'Chromatic Deployment'
+name: 'Chromatic Deployment Of GyeongHoWebComponents Subproject'
 
 # Event for the workflow
 on:
@@ -18,9 +18,10 @@ jobs:
       - run: npm i
       - run: npm run lint
         #👇 Adds Chromatic as a step in the workflow
-      - uses: chromaui/action@v1
+      - uses: chromaui/action@latest
         # Options required for Chromatic's GitHub Action
         with:
           #👇 Chromatic projectToken, see https://storybook.js.org/tutorials/intro-to-storybook/react/ko/deploy/ to obtain it
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          workingDir: packages/gyeongho-web-components
           token: ${{ secrets.GITHUB_TOKEN }}
