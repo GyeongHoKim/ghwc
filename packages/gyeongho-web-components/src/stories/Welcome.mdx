@@ -1,0 +1,39 @@
+import {Meta} from '@storybook/blocks';
+
+<Meta title="Welcome" />
+
+# My Boss Hates React, Angular, Vue
+
+When I started my current job, I was told that my boss does not like React.
+There are many reasons for this, but the main one is that he believes that modern FE frameworks is too complex regarding our project.
+Of course, I disagree with him, but I understand his point of view.
+As a result, I am now working with Lit and Web Components during my working hours.
+
+# Design Systems
+
+After few months, I realized that there are no design systems in my company.
+However, I was the only front-end developer & designer in my company and there was no time for me to create a design system.
+At that time, I used shoelace and carbon design systems.
+
+It is pretty good for our team, but I always wanted to create our own design system.
+This project is practice for creating design systems for my company.
+
+당장은 버튼, 모달, 인풋, 테이블 컴포넌트를 만들어보려고 함.
+연습 기간은 한달.
+연습 경험을 토대로 정확히 한달 뒤, 회사 출근해서 디자인 시스템 뚝딱 구축해서 실제로 써먹는게 최종 목표.
+
+# 회사에서 오픈소스 디자인 시스템 라이브러리 쓰다가 느낀 불편점들
+
+- 거의 대부분이 리액트에서만 사용할 수 있습니다. 공통 라이브러리를 리액트 컴포넌트로 만들면 리액트 안쓰는 팀은 어쩔건데...
+- 엄청 무겁습니다. 우린 가벼운걸 원해.
+  - 각 컴포넌트별로 따로 패키징되어야 합니다.
+- 내가 원하는 컴포넌트가 없습니다. 내가 바라는 요구사항은 다음과 같습니다.
+  - 각 컴포넌트 요구사항 문서 참고.
+- 고객사따라 스타일과 아이콘이 달라지는데 theme으로는 한계가 있습니다.
+  - part가 자세한 라이브러리 일 수록 편했습니다. 근데 그런 라이브러리가 잘 없습니다.
+  - 물론 theme도 필요함.
+- Headless하고 CSS를 외부에서 주입해줄 수 있어야 합니다.
+  - 리액트는 그게 되는데 web component쪽에서는 아직 theme말고 대안이 떠오르지 않음.
+  - 연구 필요.
+- 레이아웃과 관련한 컴포넌트가 없습니다.
+  - 모든 간격과 padding, margin 등이 동일해야 하는데 각 컴포넌트 내에서만 동일하고 컴포넌트 간의 간격은 개발자 마음대로 됨.
