@@ -2,37 +2,53 @@
 name: Bug report
 about: Create a report to help us improve
 title: ''
-labels: ''
-assignees: ''
+labels: bug
+assignees: GyeongHoKim
 
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+# [Component Name] 버그 리포트
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+## 버그 설명
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+[Describe the bug and the unexpected behavior you encountered]
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+## 재현 단계
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
+1. [Step 1]
+2. [Step 2]
+3. [Step 3]
 
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
+## 예상되는 동작
 
-**Additional context**
-Add any other context about the problem here.
+[Describe what you expected to happen]
+
+## 실제 동작
+
+[Describe what actually happened]
+
+## 스크린샷 또는 예시 코드
+
+[Attach screenshots or provide a minimal example code that demonstrates the bug]
+
+## 환경
+
+- 운영체제: [e.g., Windows, macOS, Linux]
+- 브라우저: [e.g., Chrome, Firefox, Safari]
+- 버전: [e.g., 1.2.3]
+
+## 추가 정보
+
+[Provide any additional information or context that might be helpful]
+
+## 라벨
+
+- `bug`
+
+## 할당대상자
+
+- @[Assignee]
+
+## 마일스톤
+
+- [Milestone]
