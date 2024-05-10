@@ -16,6 +16,7 @@ const config: StorybookConfig = {
     getAbsolutePath("@storybook/addon-essentials"),
     getAbsolutePath("@chromatic-com/storybook"),
     getAbsolutePath("@storybook/addon-mdx-gfm"),
+    "storybook-design-token",
   ],
   framework: {
     name: getAbsolutePath("@storybook/web-components-vite"),
