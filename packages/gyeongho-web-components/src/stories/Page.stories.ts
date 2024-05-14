@@ -1,11 +1,11 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { Meta, StoryObj } from "@storybook/web-components";
 
-import type { PageProps } from './Page';
-import { Page } from './Page';
-import * as HeaderStories from './Header.stories';
+import type { PageProps } from "./Page";
+import { Page } from "./Page";
+import * as HeaderStories from "./Header.stories";
 
 const meta = {
-  title: 'Example/Page',
+  title: "Example/Page",
   render: (args: PageProps) => Page(args),
 } satisfies Meta<PageProps>;
 
