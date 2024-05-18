@@ -8,5 +8,8 @@ export default tseslint.config(
   ...tseslint.configs.recommended,
   {
     ignores: ["**/.storybook/*", "**/dist/*", "**/node_modules/*"],
+    rules: {
+      "@typescript-eslint/no-explicit-any": "off",
+    },
   },
 );

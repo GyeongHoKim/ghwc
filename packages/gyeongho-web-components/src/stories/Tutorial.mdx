@@ -1,4 +1,4 @@
-import {Meta} from '@storybook/blocks';
+import { Meta } from "@storybook/blocks";
 
 <Meta title="Getting Started" />
 
@@ -7,24 +7,28 @@ import {Meta} from '@storybook/blocks';
 To install the `@gyeongho/gyeongho-web-component` package using npm, follow these steps:
 
 1. Create a GitHub personal access token:
-  - Go to your GitHub account settings and navigate to the "Developer settings" page.
-  - Under the "Personal access tokens" tab, click on "Generate new token".
-  - Grant the necessary permissions to the token (e.g., `read:packages`).
-  - Copy the generated token and keep it secure.
+
+- Go to your GitHub account settings and navigate to the "Developer settings" page.
+- Under the "Personal access tokens" tab, click on "Generate new token".
+- Grant the necessary permissions to the token (e.g., `read:packages`).
+- Copy the generated token and keep it secure.
 
 2. Add the GitHub registry to your npm configuration:
-  - Create or edit the `.npmrc` file in your home directory.
-  - Add the following lines to the `.npmrc` file:
+
+- Create or edit the `.npmrc` file in your home directory.
+- Add the following lines to the `.npmrc` file:
+
 ```
 @gyeongho:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=YOUR_GITHUB_PERSONAL_ACCESS_TOKEN
 ```
+
 - Replace `YOUR_GITHUB_PERSONAL_ACCESS_TOKEN` with the personal access token you created in step 1.
 
 3. Install the package using npm:
-npm install @gyeongho/gyeongho-web-component
-Copy code
-That's it! You should now have the `@gyeongho/gyeongho-web-component` package installed in your project.
+   npm install @gyeongho/gyeongho-web-component
+   Copy code
+   That's it! You should now have the `@gyeongho/gyeongho-web-component` package installed in your project.
 
 If you encounter any issues during the installation process, please make sure you have correctly followed the steps above and have the necessary permissions to access the package.
 
@@ -43,7 +47,7 @@ add importMap in your html file.
   }
 </script>
 <script type="module">
-  import '@gyeonghokim/gyeongho-web-components';
+  import "@gyeonghokim/gyeongho-web-components";
 </script>
 ```
 
@@ -51,22 +55,18 @@ and use it in your html file, or in your framework or library.
 
 ```html
 <gh-table>
-  <gh-table-head>
-    <gh-table-header-row>
-      <gh-table-header-cell>Column 1</gh-table-header-cell>
-      <gh-table-header-cell>Column 2</gh-table-header-cell>
-    </gh-table-header-row>
-  </gh-table-head>
-  <gh-table-body>
-    <gh-table-row>
-      <gh-table-cell>Row 1, Column 1</gh-table-cell>
-      <gh-table-cell>Row 1, Column 2</gh-table-cell>
-    </gh-table-row>
-    <gh-table-row>
-      <gh-table-cell>Row 2, Column 1</gh-table-cell>
-      <gh-table-cell>Row 2, Column 2</gh-table-cell>
-    </gh-table-row>
-  </gh-table-body>
+  <gh-table-row slot="header">
+    <gh-table-cell head>Column 1</gh-table-cell>
+    <gh-table-cell head>Column 2</gh-table-cell>
+  </gh-table-row>
+  <gh-table-row>
+    <gh-table-cell>Row 1, Column 1</gh-table-cell>
+    <gh-table-cell>Row 1, Column 2</gh-table-cell>
+  </gh-table-row>
+  <gh-table-row>
+    <gh-table-cell>Row 2, Column 1</gh-table-cell>
+    <gh-table-cell>Row 2, Column 2</gh-table-cell>
+  </gh-table-row>
 </gh-table>
 ```
 

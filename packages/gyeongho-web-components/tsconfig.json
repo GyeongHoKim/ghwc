@@ -20,5 +20,5 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "files": ["src/index.ts"]
+  "include": ["src/**/*"],
 }
