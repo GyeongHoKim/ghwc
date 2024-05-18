@@ -91,7 +91,7 @@ export class GHTableCell extends LitElement {
         <slot></slot>
       </gh-text>
       ${this.head && this.sorted
-        ? html`<gh-icon size="s" icon="arrow-downward" class="sort"></gh-icon>`
+        ? html`<gh-icon size="s" icon="arrow_downward" class="sort"></gh-icon>`
         : ""}
     `;
   }
@@ -119,6 +119,7 @@ export class GHTableCell extends LitElement {
   handleSort() {
     if (this.sorted) {
       this.sortDirection = this.sortDirection === "asc" ? "desc" : "asc";
+      return;
     }
     const siblings: NodeList | undefined = this.parentElement?.childNodes;
     siblings?.forEach((el: any) => {
