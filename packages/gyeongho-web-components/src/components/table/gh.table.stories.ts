@@ -2,11 +2,20 @@ import type { Meta, StoryObj } from "@storybook/web-components";
 import { fakerKO as faker } from "@faker-js/faker";
 import { html } from "lit";
 import { repeat } from "lit/directives/repeat.js";
-import "../../index";
+import "./gh.table.ts";
+import "./gh.table.row.ts";
+import "./gh.table.cell.ts";
+import "../text/gh.text.ts";
+import "../icon/gh.icon.ts";
 
-type CustomArgs = { isSortable?: boolean };
+type CustomArgs = {
+  readonly: boolean;
+  condensed: boolean;
+  columns: string;
+  containerHeight: string;
+};
 
-const columns = ["id", "name", "bio", "gender", "job", "sex", "email"];
+const dummyColumns = ["id", "name", "bio", "gender", "job", "sex", "email"];
 const dummyItems = Array.from({ length: 100 }, () => ({
   id: faker.string.uuid(),
   name: faker.person.fullName(),
@@ -21,23 +30,29 @@ const meta: Meta<CustomArgs> = {
   title: "GHWC/Table",
   tags: ["autodocs"],
   component: "gh-table",
-  render: ({ isSortable }) => html`
-    <gh-table>
-      <gh-table-head ${isSortable ? "isSortable" : ""}>
-        <gh-table-header-row>
-          ${columns.map(
-            (column) =>
-              html` <gh-table-header-cell>${column}</gh-table-header-cell>`,
+  render: ({ readonly, condensed, columns, containerHeight }) => html`
+    <section style=${`height: ${containerHeight}`}>
+      <gh-table
+        ?readonly=${readonly}
+        ?condensed=${condensed}
+        columns=${columns}
+      >
+        <gh-table-row slot="header">
+          ${repeat(
+            dummyColumns,
+            (column) => column,
+            (column) => html`
+              <gh-table-cell head sortable>${column}</gh-table-cell>
+            `,
           )}
-        </gh-table-header-row>
-      </gh-table-head>
-      <gh-table-body>
+        </gh-table-row>
+
         ${repeat(
           dummyItems,
           (item) => item.id,
           (item) => html`
             <gh-table-row>
-              ${columns.map(
+              ${dummyColumns.map(
                 (column) =>
                   html` <gh-table-cell
                     >${item[column as keyof typeof item]}</gh-table-cell
@@ -46,16 +61,37 @@ const meta: Meta<CustomArgs> = {
             </gh-table-row>
           `,
         )}
-      </gh-table-body>
-    </gh-table>
+      </gh-table>
+    </section>
   `,
 };
 
 export default meta;
 type Story = StoryObj<CustomArgs>;
 
-export const Basic: Story = {
+export const ReadOnly: Story = {
   args: {
-    isSortable: false,
+    readonly: true,
+    condensed: false,
+    columns: "repeat(7, 1fr)",
+    containerHeight: "500px",
+  },
+};
+
+export const Condensed: Story = {
+  args: {
+    readonly: false,
+    condensed: true,
+    columns: "repeat(7, 1fr)",
+    containerHeight: "500px",
+  },
+};
+
+export const CustomColumns: Story = {
+  args: {
+    readonly: false,
+    condensed: false,
+    columns: "4fr 1fr 4fr 1fr 4fr 1fr 4fr",
+    containerHeight: "500px",
   },
 };

@@ -55,22 +55,18 @@ and use it in your html file, or in your framework or library.
 
 ```html
 <gh-table>
-  <gh-table-head>
-    <gh-table-header-row>
-      <gh-table-header-cell>Column 1</gh-table-header-cell>
-      <gh-table-header-cell>Column 2</gh-table-header-cell>
-    </gh-table-header-row>
-  </gh-table-head>
-  <gh-table-body>
-    <gh-table-row>
-      <gh-table-cell>Row 1, Column 1</gh-table-cell>
-      <gh-table-cell>Row 1, Column 2</gh-table-cell>
-    </gh-table-row>
-    <gh-table-row>
-      <gh-table-cell>Row 2, Column 1</gh-table-cell>
-      <gh-table-cell>Row 2, Column 2</gh-table-cell>
-    </gh-table-row>
-  </gh-table-body>
+  <gh-table-row slot="header">
+    <gh-table-cell head>Column 1</gh-table-cell>
+    <gh-table-cell head>Column 2</gh-table-cell>
+  </gh-table-row>
+  <gh-table-row>
+    <gh-table-cell>Row 1, Column 1</gh-table-cell>
+    <gh-table-cell>Row 1, Column 2</gh-table-cell>
+  </gh-table-row>
+  <gh-table-row>
+    <gh-table-cell>Row 2, Column 1</gh-table-cell>
+    <gh-table-cell>Row 2, Column 2</gh-table-cell>
+  </gh-table-row>
 </gh-table>
 ```
 
