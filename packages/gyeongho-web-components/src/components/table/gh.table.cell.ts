@@ -127,4 +127,9 @@ export class GHTableCell extends LitElement {
     this.sorted = true;
     this.sortDirection = "asc";
   }
+
+  disconnectedCallback() {
+    this.removeEventListener("click", this.handleSort);
+    super.disconnectedCallback();
+  }
 }

@@ -24,5 +24,6 @@ const config: StorybookConfig = {
     options: {},
   },
   docs: {},
+  staticDirs: [getAbsolutePath("../public")],
 };
 export default config;

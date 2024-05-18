@@ -30,7 +30,7 @@ export class GHTableRow extends LitElement {
         background-color: rgba(var(--neutral-1), 0.1);
       }
       @media (hover: hover) {
-        :host(:host:not([active]):not([slot="header"])) {
+        :host(:hover:not([active]):not([slot="header"])) {
           background-color: rgba(var(--neutral-1), 0.05);
         }
         :host(:host:not([active])):host-context(gh-table[readonly]) {
@@ -41,10 +41,15 @@ export class GHTableRow extends LitElement {
   ];
 
   @property({ type: Boolean, reflect: true })
-  active: boolean | undefined;
+  active: boolean;
+
+  constructor() {
+    super();
+    this.active = false;
+  }
 
   render(): unknown {
-    return html`<slot></slot>`;
+    return html`<slot @click=${this.handleActive}></slot>`;
   }
 
   attributeChangedCallback(
@@ -58,7 +63,6 @@ export class GHTableRow extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.addEventListener("click", () => this.handleActive());
     this.handleColumns();
   }
 
@@ -68,6 +72,9 @@ export class GHTableRow extends LitElement {
     if (!(<GHTable>table)?.readonly && this.slot != "header") {
       siblings = this.parentElement?.childNodes;
       siblings?.forEach((el: Node) => {
+        if (el === this) {
+          return;
+        }
         (<GHTableRow>el).active = false;
       });
       this.active = !this.active;
