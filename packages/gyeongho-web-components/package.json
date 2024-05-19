@@ -4,6 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "main": "dist/ghwc.es.js",
+  "publishConfig": {
+    "@gyeonghokim:registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
