@@ -12,17 +12,15 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
-  "dependencies": {
-  },
   "devDependencies": {
-    "@eslint/js": "^9.1.1",
+    "@eslint/js": "^9.3.0",
     "eslint": "^8.57.0",
     "lerna": "^8.1.2",
     "typescript": "^5.4.5",
-    "typescript-eslint": "^7.7.0"
+    "typescript-eslint": "^7.9.0"
   },
   "scripts": {
     "build": "lerna run build",
-    "lint": "npx eslint ."
+    "lint": "npx eslint . --ignore-pattern \"**/*.d.ts\" --ignore-pattern \"**/*.conf.ts\" --ignore-pattern \"**/*.js\" --ignore-pattern \"**/*.config.ts\" --ignore-pattern \"**/.storybook/\""
   }
 }

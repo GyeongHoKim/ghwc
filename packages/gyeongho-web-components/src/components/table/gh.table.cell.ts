@@ -122,8 +122,8 @@ export class GHTableCell extends LitElement {
       return;
     }
     const siblings: NodeList | undefined = this.parentElement?.childNodes;
-    siblings?.forEach((el: any) => {
-      el.sorted = false;
+    siblings?.forEach((el: Node) => {
+      (<GHTableCell>el).sorted = false;
     });
     this.sorted = true;
     this.sortDirection = "asc";

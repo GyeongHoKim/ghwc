@@ -33,7 +33,7 @@ export class MyElement extends LitElement {
         <a href="https://webdriver.io/docs/component-testing" target="_blank">
           <img
             src="https://webdriver.io/assets/images/robot-3677788dd63849c56aa5cb3f332b12d5.svg"
-            className="logo"
+            class="logo"
             alt="WebdriverIO logo"
           />
         </a>
