@@ -1,6 +1,6 @@
 {
   "name": "@gyeonghokim/gyeongho-design-system",
-  "private": true,
+  "private": false,
   "type": "module",
   "workspaces": [
     "packages/*"

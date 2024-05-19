@@ -6,30 +6,22 @@ import { Meta } from "@storybook/blocks";
 
 To install the `@gyeongho/gyeongho-web-component` package using npm, follow these steps:
 
-1. Create a GitHub personal access token:
-
-- Go to your GitHub account settings and navigate to the "Developer settings" page.
-- Under the "Personal access tokens" tab, click on "Generate new token".
-- Grant the necessary permissions to the token (e.g., `read:packages`).
-- Copy the generated token and keep it secure.
-
-2. Add the GitHub registry to your npm configuration:
+1. Add the Github registry to your npm configuration:
 
 - Create or edit the `.npmrc` file in your home directory.
 - Add the following lines to the `.npmrc` file:
 
 ```
 @gyeongho:registry=https://npm.pkg.github.com
-//npm.pkg.github.com/:_authToken=YOUR_GITHUB_PERSONAL_ACCESS_TOKEN
 ```
 
-- Replace `YOUR_GITHUB_PERSONAL_ACCESS_TOKEN` with the personal access token you created in step 1.
+2. Install the package using npm:
 
-3. Install the package using npm:
-   npm install @gyeongho/gyeongho-web-component
-   Copy code
-   That's it! You should now have the `@gyeongho/gyeongho-web-component` package installed in your project.
+```bash
+npm install @gyeongho/gyeongho-web-component
+```
 
+That's it! You should now have the `@gyeongho/gyeongho-web-component` package installed in your project.
 If you encounter any issues during the installation process, please make sure you have correctly followed the steps above and have the necessary permissions to access the package.
 
 For more information and usage examples, refer to the package documentation.
@@ -39,6 +31,8 @@ For more information and usage examples, refer to the package documentation.
 add importMap in your html file.
 
 ```html
+<link rel="stylesheet" href="YOUR_PATH/gyeongho-web-components/dist/design.tokens.css" />
+<link rel="stylesheet" href="YOUR_PATH/gyeongho-web-components/dist/index.css" />
 <script type="importmap">
   {
     "imports": {
@@ -68,6 +62,25 @@ and use it in your html file, or in your framework or library.
     <gh-table-cell>Row 2, Column 2</gh-table-cell>
   </gh-table-row>
 </gh-table>
+```
+
+## Usage(With Bundler)
+
+If you are using a bundler like Webpack or Rollup, you can import the package directly in your JavaScript code.
+
+first, link the css file in your html file.
+
+```html
+<link rel="stylesheet" href="YOUR_PATH/gyeongho-web-components/dist/design.tokens.css" />
+<link rel="stylesheet" href="YOUR_PATH/gyeongho-web-components/dist/index.css" />
+```
+
+and import the package in your JavaScript or TypeScript code.
+
+```javascript
+import "@gyeonghokim/gyeongho-web-components";
+// if you want to override the Component Class
+import { GHTable } from "@gyeonghokim/gyeongho-web-components/src/components/table/index";
 ```
 
 ## Explore Our Components
