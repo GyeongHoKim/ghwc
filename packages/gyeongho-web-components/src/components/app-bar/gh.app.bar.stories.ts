@@ -5,6 +5,7 @@ import "./gh.app.bar.ts";
 const meta: Meta = {
   title: "GHWC/AppBar",
   component: "gh-app-bar",
+  tags: ["autodocs"],
   argTypes: {
     label: { control: "text" },
     logoSrc: { control: "text" },
