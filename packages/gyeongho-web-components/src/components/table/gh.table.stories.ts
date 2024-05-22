@@ -15,6 +15,7 @@ type CustomArgs = {
   containerHeight: string;
 };
 
+faker.seed(123);
 const dummyColumns = ["id", "name", "bio", "gender", "job", "sex", "email"];
 const dummyItems = Array.from({ length: 100 }, () => ({
   id: faker.string.uuid(),
