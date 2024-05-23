@@ -27,7 +27,6 @@ jobs:
         run: npm run build
 
       - name: Publish Web Component package
-        run: npm publish
-        working-directory: ./packages/gyeongho-web-components
+        run: lerna publish from-package --yes
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
