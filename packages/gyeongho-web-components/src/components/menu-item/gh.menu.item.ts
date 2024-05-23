@@ -19,6 +19,8 @@ import { sharedStyles } from "../../shared-styles";
  *
  * @slot - Displayed inside the content area.
  * @slot functions - Shown on the right side.
+ *
+ * @csspart base - The main container.
  */
 @customElement("gh-menu-item")
 export class GHMenuItem extends LitElement {
@@ -32,10 +34,11 @@ export class GHMenuItem extends LitElement {
     return [
       sharedStyles,
       css`
-        :host {
+        .container {
           padding: var(--spacing-s) 0;
           border-radius: var(--border-radius);
           display: flex;
+          align-items: center;
           cursor: pointer;
           transition: var(--transition-1);
           overflow: visible;
@@ -57,20 +60,20 @@ export class GHMenuItem extends LitElement {
         slot[name="functions"]::slotted(*) {
           margin-left: var(--spacing-s);
         }
-        :host([active]) {
+        :host([active]) .container {
           padding: var(--spacing-s);
           margin-left: calc(var(--spacing-s) * -1);
           margin-right: calc(var(--spacing-s) * -1);
           background: rgba(var(--neutral-1), 0.1);
         }
         /* disabled */
-        :host([disabled]) {
+        :host([disabled]) .container {
           opacity: 0.2;
           pointer-events: none;
         }
         /* hover inputs */
         @media (hover: hover) {
-          :host(:not([active]):hover) {
+          :host(:not([active]):hover) .container {
             padding: var(--spacing-s);
             margin-left: calc(var(--spacing-s) * -1);
             margin-right: calc(var(--spacing-s) * -1);
@@ -83,21 +86,26 @@ export class GHMenuItem extends LitElement {
 
   render() {
     return html`
-      ${this.icon ? html` <gh-icon icon="${this.icon}"></gh-icon> ` : ""}
-      ${this.label ? html` <gh-text>${this.label}</gh-text> ` : ""}
-      <!-- functions slot -->
-      <slot name="functions"></slot>
+      <div
+        class="container"
+        part="base"
+        @click=${() => {
+          if (!this.toggle) {
+            return;
+          }
+          this.active = !this.active;
+        }}
+      >
+        ${this.icon ? html` <gh-icon icon="${this.icon}"></gh-icon> ` : ""}
+        ${this.label ? html` <gh-text>${this.label}</gh-text> ` : ""}
+        <!-- functions slot -->
+        <slot name="functions"></slot>
+      </div>
     `;
   }
 
   attributeChangedCallback(name: string, oldval: string, newval: string) {
     super.attributeChangedCallback(name, oldval, newval);
     this.dispatchEvent(new Event(`${name}-changed`));
-    // add toggle click listener
-    if (name == "toggle" && this.toggle) {
-      this.addEventListener("click", () => {
-        this.active = !this.active;
-      });
-    }
   }
 }
