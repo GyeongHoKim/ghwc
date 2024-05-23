@@ -10,7 +10,7 @@ import { GHMenuItem } from "../menu-item/gh.menu.item.ts";
  * @customElement gh-input
  * @see https://kor-ui.com/components/input
  *
- * @dependency {GHMenuItem} from gh-menu-item
+ * @dependency {GHMenuItem} gh-menu-item
  * @dependency {GHIcon} gh-icon
  * @dependency {GHText} gh-text
  * @dependency {GHCard} gh-card
