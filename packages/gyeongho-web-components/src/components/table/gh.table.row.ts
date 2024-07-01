@@ -1,7 +1,8 @@
-import { css, html, LitElement } from "lit";
-import { customElement, property } from "lit/decorators.js";
-import { GHTable } from "./gh.table.ts";
-import { sharedStyles } from "../../shared-styles.ts";
+import {css, html, LitElement} from "lit";
+import {property} from "lit/decorators.js";
+import {GHTable} from "./gh.table.ts";
+import {sharedStyles} from "../../shared-styles.ts";
+import {nanoid} from "nanoid";
 
 /**
  * 경호 테이블 row 컴포넌트
@@ -13,7 +14,6 @@ import { sharedStyles } from "../../shared-styles.ts";
  *
  * @slot - 테이블 cell
  */
-@customElement("gh-table-row")
 export class GHTableRow extends LitElement {
   static override styles = [
     sharedStyles,
@@ -23,16 +23,20 @@ export class GHTableRow extends LitElement {
         border-bottom: 1px solid rgba(var(--neutral-1), 0.15);
         transition: var(--transition-1);
       }
+
       :host([slot="header"]) {
         border-color: rgba(var(--neutral-1), 0.4);
       }
+
       :host([active]) {
         background-color: rgba(var(--neutral-1), 0.1);
       }
+
       @media (hover: hover) {
         :host(:hover:not([active]):not([slot="header"])) {
           background-color: rgba(var(--neutral-1), 0.05);
         }
+
         :host(:host:not([active])):host-context(gh-table[readonly]) {
           background-color: transparent;
         }
@@ -42,14 +46,17 @@ export class GHTableRow extends LitElement {
 
   @property({ type: Boolean, reflect: true })
   active: boolean;
+  @property({ type: String, reflect: true })
+  rowId: string;
 
   constructor() {
     super();
     this.active = false;
+    this.rowId = nanoid();
   }
 
   render(): unknown {
-    return html`<slot @click=${this.handleActive}></slot>`;
+    return html` <slot @click=${this.handleActive}></slot>`;
   }
 
   attributeChangedCallback(
@@ -85,4 +92,8 @@ export class GHTableRow extends LitElement {
     const table: HTMLElement | null = this.closest("gh-table");
     this.style.gridTemplateColumns = (<GHTable>table)?.columns;
   }
+}
+
+if (!window.customElements.get("gh-table-row")) {
+  window.customElements.define("gh-table-row", GHTableRow);
 }

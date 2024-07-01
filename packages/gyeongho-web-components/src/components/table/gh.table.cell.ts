@@ -1,6 +1,7 @@
-import { customElement, property } from "lit/decorators.js";
-import { css, html, LitElement } from "lit";
-import { sharedStyles } from "../../shared-styles.ts";
+import {property} from "lit/decorators.js";
+import {css, html, LitElement, PropertyValues} from "lit";
+import {sharedStyles} from "../../shared-styles.ts";
+import {GHTable} from "./gh.table.ts";
 
 /**
  * 경호 테이블 셀 컴포넌트
@@ -14,7 +15,6 @@ import { sharedStyles } from "../../shared-styles.ts";
  * @prop {Boolean} sorted - header cell이고 sortable일 때 arrow icon을 방향에 맞게 보여준다.
  * @prop {String} sortDirection - header cell이고 sortable이고 sorted일 때 정렬방향을 정한다(asc, desc 중 하나).
  */
-@customElement("gh-table-cell")
 export class GHTableCell extends LitElement {
   static override styles = [
     sharedStyles,
@@ -91,7 +91,7 @@ export class GHTableCell extends LitElement {
         <slot></slot>
       </gh-text>
       ${this.head && this.sorted
-        ? html`<gh-icon size="s" icon="arrow_downward" class="sort"></gh-icon>`
+        ? html` <gh-icon size="s" icon="arrow_downward" class="sort"></gh-icon>`
         : ""}
     `;
   }
@@ -107,9 +107,6 @@ export class GHTableCell extends LitElement {
       this.style.gridColumn = `span ${this.gridCols}`;
     }
     if (name === "sortable" && this.sortable) {
-      if (!this.sortDirection) {
-        this.sortDirection = "asc";
-      }
       this.addEventListener("click", () => {
         this.handleSort();
       });
@@ -133,4 +130,36 @@ export class GHTableCell extends LitElement {
     this.removeEventListener("click", this.handleSort);
     super.disconnectedCallback();
   }
+
+  protected updated(_changedProperties: PropertyValues) {
+    if (_changedProperties.has("sortDirection")) {
+      const ghTable: GHTable | null = this.closest("gh-table");
+      if (!ghTable || !this.parentElement) {
+        return;
+      }
+      const data: Array<Array<string>> = ghTable.data;
+      const siblings: NodeList | undefined = this.parentElement.childNodes;
+      const columnIndex: number = Array.from(siblings)
+        .filter((el) => el instanceof GHTableCell)
+        .indexOf(this);
+      data.sort((a, b) => {
+        if (this.sortDirection === "asc") {
+          return a[columnIndex].localeCompare(b[columnIndex]);
+        }
+        return b[columnIndex].localeCompare(a[columnIndex]);
+      });
+      this.dispatchEvent(
+        new CustomEvent("sorted", {
+          detail: data,
+          bubbles: true,
+          composed: true,
+        }),
+      );
+    }
+    super.updated(_changedProperties);
+  }
+}
+
+if (!window.customElements.get("gh-table-cell")) {
+  window.customElements.define("gh-table-cell", GHTableCell);
 }
